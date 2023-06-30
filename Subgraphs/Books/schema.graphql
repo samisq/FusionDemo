@@ -1,0 +1,23 @@
+schema {
+  query: Query
+}
+
+type Author {
+  id: Int!
+  books: [Book!]!
+}
+
+type Book {
+  id: Int!
+  title: String!
+  authorId: Int!
+}
+
+type Query {
+  bookById(id: Int!): Book
+  booksById(ids: [Int!]!): [Book!]
+  books: [Book!]!
+  booksByAuthorId(authorId: Int!): [Book!]!
+  bookAuthor(authorId: Int!): Author!
+  bookAuthors(authorIds: [Int!]!): [Author!]
+}

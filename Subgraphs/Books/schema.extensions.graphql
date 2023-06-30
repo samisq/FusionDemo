@@ -1,0 +1,7 @@
+extend type Query {
+  bookById(id: Int! @is(field: "id")): Book
+  booksById(ids: [Int!]! @is(field: "id")): [Book!]
+  booksByAuthorId(authorId: Int! @is(field: "authorId")): [Book!]!
+  bookAuthor(authorId: Int! @is(field: "id")): Author!
+  bookAuthors(authorIds: [Int!]! @is(field: "id")): [Author!]
+}
