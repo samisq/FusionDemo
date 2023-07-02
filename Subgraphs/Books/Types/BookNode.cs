@@ -1,8 +1,10 @@
 namespace Demo.Books.Types;
 
-[ExtendObjectType<Book>]
+[ExtendObjectType<Book>(IgnoreProperties = new[] { nameof(Book.AuthorId) })]
 internal static class BookNode
 {
+    public static Author GetAuthor([Parent] Book book) => new() { Id = book.AuthorId };
+
     [DataLoader]
     internal static async Task<IReadOnlyDictionary<int, Book>> GetBookByIdAsync(
         IReadOnlyList<int> ids,

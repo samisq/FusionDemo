@@ -1,5 +1,4 @@
 extend type Query {
   authorById(id: Int! @is(field: "id")): Author
   authorsById(ids: [Int!]! @is(field: "id")): [Author!]
-  booksByAuthorIds(authorIds: [Int!]! @is(field: "authorId")): [Book!]
 }

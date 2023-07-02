@@ -17,7 +17,4 @@ public static class Query
 
     public static IQueryable<Author> GetAuthors(AuthorContext context)
         => context.Authors.OrderBy(t => t.Name);
-
-    public static IReadOnlyList<Book> GetBooksByAuthorIds(int[] authorIds)
-        => authorIds.Select(authorId => new Book {AuthorId = authorId}).ToList();
 }

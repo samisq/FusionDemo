@@ -7,14 +7,8 @@ type Author {
   name: String
 }
 
-type Book {
-  authorId: Int!
-  author: Author!
-}
-
 type Query {
   authorById(id: Int!): Author
   authorsById(ids: [Int!]!): [Author!]
   authors: [Author!]!
-  booksByAuthorIds(authorIds: [Int!]!): [Book!]!
 }
