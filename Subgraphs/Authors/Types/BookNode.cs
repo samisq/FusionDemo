@@ -10,7 +10,7 @@ internal static class BookNode
 {
     public static async Task<Author> GetAuthorAsync(
         [Parent] Book book,
-        AuthorsByIdDataLoader loader,
+        IAuthorsByIdDataLoader loader,
         CancellationToken cancellationToken)
         => await loader.LoadAsync(book.AuthorId, cancellationToken);
 }

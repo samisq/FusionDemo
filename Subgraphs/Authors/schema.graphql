@@ -15,7 +15,6 @@ type Book {
 type Query {
   authorById(id: Int!): Author
   authorsById(ids: [Int!]!): [Author!]
-  authors: [Author!]
-  booksByAuthorId(authorId: Int!): Book!
-  booksByAuthorIds(authorIds: [Int!]!): [Book!]
+  authors: [Author!]!
+  booksByAuthorIds(authorIds: [Int!]!): [Book!]!
 }

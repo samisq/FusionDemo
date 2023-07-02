@@ -19,5 +19,5 @@ type Query {
   books: [Book!]!
   booksByAuthorId(authorId: Int!): [Book!]!
   bookAuthor(authorId: Int!): Author!
-  bookAuthors(authorIds: [Int!]!): [Author!]
+  bookAuthors(authorIds: [Int!]!): [Author!]!
 }
