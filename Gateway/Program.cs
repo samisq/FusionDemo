@@ -3,8 +3,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
 
 builder.Services
-    .AddFusionGatewayServer(
-        "./gateway.fgp",
+    .AddFusionGatewayServer()
+    .ConfigureFromFile("./gateway.fgp",
         watchFileForUpdates: true);
 
 var app = builder.Build();
