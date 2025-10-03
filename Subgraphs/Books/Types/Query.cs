@@ -8,12 +8,12 @@ public static class Query
         IBookByIdDataLoader loader,
         CancellationToken cancellationToken)
         => await loader.LoadAsync(id, cancellationToken);
-    
-    public static async Task<IReadOnlyList<Book>?> GetBooksById(
+
+    public static async Task<IReadOnlyList<Book>> GetBooksById(
         int[] ids,
         IBookByIdDataLoader loader,
         CancellationToken cancellationToken)
-        => await loader.LoadAsync(ids, cancellationToken);
+        => (await loader.LoadAsync(ids, cancellationToken)).Select(x => x!).ToList();
 
     public static IQueryable<Book> GetBooks(BookContext context)
         => context.Books.OrderBy(t => t.Id);
@@ -22,7 +22,7 @@ public static class Query
         int authorId,
         IBooksByAuthorIdDataLoader loader,
         CancellationToken cancellationToken)
-        => await loader.LoadAsync(authorId, cancellationToken);
+        => await loader.LoadAsync(authorId, cancellationToken) ?? [];
 
     public static Author GetBookAuthor(int authorId)
         => new Author { Id = authorId };

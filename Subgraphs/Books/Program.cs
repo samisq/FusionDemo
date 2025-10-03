@@ -4,9 +4,7 @@ builder.Services.AddSingleton<BookContext>();
 
 builder.Services
     .AddGraphQLServer()
-    .AddTypes()
-    .RegisterService<BookContext>();
-
+    .AddTypes();
 var app = builder.Build();
 
 app.UseWebSockets();

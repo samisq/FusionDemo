@@ -1,0 +1,22 @@
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/Subgraphs/Authors"
+    schedule: { interval: "daily" }
+    open-pull-requests-limit: 10
+    labels: [ "dependencies", "untracked work" ]
+    commit-message: { prefix: "chore", include: "scope" }
+    allow:
+      - dependency-name: "*"
+        dependency-type: "direct"
+    ignore:
+      - dependency-name: "*"
+        update-types: [ "version-update:semver-major" ]
+    groups:
+      GraphQL:
+        patterns:
+          - "HotChocolate.*"
+      DataAccess:
+        patterns:
+          - "Microsoft.EntityFrameworkCore.*"

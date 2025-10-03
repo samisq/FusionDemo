@@ -5,8 +5,7 @@ builder.Services
 
 builder.Services
     .AddGraphQLServer()
-    .AddAuthorTypes()
-    .RegisterService<AuthorContext>();
+    .AddAuthorTypes();
 
 var app = builder.Build();
 

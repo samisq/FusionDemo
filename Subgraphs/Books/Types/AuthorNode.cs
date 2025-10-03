@@ -12,5 +12,5 @@ internal static class AuthorNode
         [Parent] Author author,
         IBooksByAuthorIdDataLoader loader,
         CancellationToken cancellationToken)
-        => await loader.LoadAsync(author.Id, cancellationToken);
+        => await loader.LoadAsync(author.Id, cancellationToken) ?? [];
 }

@@ -13,7 +13,7 @@ public static class Query
         int[] ids,
         IAuthorsByIdDataLoader userById,
         CancellationToken cancellationToken)
-        => await userById.LoadAsync(ids, cancellationToken);
+        => (await userById.LoadAsync(ids, cancellationToken)).Select(x => x!).ToList();
 
     public static IQueryable<Author> GetAuthors(AuthorContext context)
         => context.Authors.OrderBy(t => t.Name);
