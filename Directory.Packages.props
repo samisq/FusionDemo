@@ -6,7 +6,7 @@
     </PropertyGroup>
     <PropertyGroup>
         <EFCoreVersion>9.0.0</EFCoreVersion>
-        <HotChocolateVersion>15.1.8</HotChocolateVersion>
+        <HotChocolateVersion>15.1.10</HotChocolateVersion>
     </PropertyGroup>
     <ItemGroup>
         <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(EFCoreVersion)" />
