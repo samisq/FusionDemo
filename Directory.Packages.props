@@ -4,24 +4,20 @@
         <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
         <CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
     </PropertyGroup>
-    <PropertyGroup>
-        <EFCoreVersion>9.0.0</EFCoreVersion>
-        <HotChocolateVersion>15.1.8</HotChocolateVersion>
-    </PropertyGroup>
     <ItemGroup>
-        <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(EFCoreVersion)" />
-        <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(EFCoreVersion)" />
-        <PackageVersion Include="HotChocolate.AspNetCore" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.AspNetCore.Authorization" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.AspNetCore.CommandLine" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.Data.EntityFramework" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.Diagnostics" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.Execution" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.Fusion" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.Subscriptions.Redis" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.Transport.Http" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.Types.Analyzers" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.Types.NodaTime" Version="$(HotChocolateVersion)" />
-        <PackageVersion Include="HotChocolate.Types.OffsetPagination" Version="$(HotChocolateVersion)" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
+        <PackageVersion Include="HotChocolate.AspNetCore" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.AspNetCore.Authorization" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.AspNetCore.CommandLine" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Data.EntityFramework" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Diagnostics" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Execution" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Fusion" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Subscriptions.Redis" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Transport.Http" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Types.Analyzers" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Types.NodaTime" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Types.OffsetPagination" Version="15.1.8" />
     </ItemGroup>
 </Project>
