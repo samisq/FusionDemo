@@ -16,7 +16,7 @@
         <PackageVersion Include="HotChocolate.Fusion" Version="15.1.8" />
         <PackageVersion Include="HotChocolate.Subscriptions.Redis" Version="15.1.8" />
         <PackageVersion Include="HotChocolate.Transport.Http" Version="15.1.8" />
-        <PackageVersion Include="HotChocolate.Types.Analyzers" Version="15.1.8" />
+        <PackageVersion Include="HotChocolate.Types.Analyzers" Version="15.1.10" />
         <PackageVersion Include="HotChocolate.Types.NodaTime" Version="15.1.8" />
         <PackageVersion Include="HotChocolate.Types.OffsetPagination" Version="15.1.8" />
     </ItemGroup>
