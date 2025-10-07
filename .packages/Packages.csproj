@@ -2,7 +2,7 @@
     <PropertyGroup>
         <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
     </PropertyGroup>
-    <Target Name="IncludeAllPackageVersions" BeforeTargets="CollectPackageReferences">
+    <Target Name="IncludeAllPackageVersions" BeforeTargets="ApplyImplicitVersions">
         <ItemGroup>
             <PackageReference Include="%(PackageVersion.Identity)" Condition="'%(PackageVersion.Identity)' != ''"/>
         </ItemGroup>
