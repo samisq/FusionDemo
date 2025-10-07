@@ -26,10 +26,10 @@
         <PackageVersion Include="MassTransit.RabbitMQ" Version="8.5.0" />
         <PackageVersion Include="MailKit" Version="4.14.0" />
         <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
-        <PackageVersion Include="Serilog.Enrichers.Context" Version="4.6.0" />
+        <PackageVersion Include="Serilog.Enrichers.Context" Version="4.6.5" />
         <PackageVersion Include="Serilog.Enrichers.Thread" Version="4.0.0" />
         <PackageVersion Include="Serilog.Extensions.Hosting" Version="9.0.0" />
-        <PackageVersion Include="Serilog.Extensions.Logging" Version="9.0.0" />
+        <PackageVersion Include="Serilog.Extensions.Logging" Version="9.0.2" />
         <PackageVersion Include="ZiggyCreatures.FusionCache" Version="2.3.0" />
         <PackageVersion Include="ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis" Version="2.3.0" />
     </ItemGroup>
