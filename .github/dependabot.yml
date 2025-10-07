@@ -2,14 +2,11 @@
 version: 2
 updates:
   - package-ecosystem: "nuget"
-    directory: "/Subgraphs/Authors"
+    directory: "/.packages"
     schedule: { interval: "daily" }
     open-pull-requests-limit: 10
     labels: [ "dependencies", "untracked work" ]
     commit-message: { prefix: "chore", include: "scope" }
-    allow:
-      - dependency-name: "*"
-        dependency-type: "direct"
     ignore:
       - dependency-name: "*"
         update-types: [ "version-update:semver-major" ]
@@ -19,4 +16,23 @@ updates:
           - "HotChocolate.*"
       DataAccess:
         patterns:
+          - "Microsoft.EntityFrameworkCore.*"
+      MassTransit:
+        patterns:
+          - "MassTransit"
+          - "MassTransit.*"
+      Logging:
+        patterns:
+          - "Serilog.*"
+      Caching:
+        patterns:
+          - "ZiggyCreatures.*"
+      Remaining:
+        patterns:
+          - "*"
+        exclude-patterns:
+          - "HotChocolate*"
+          - "MassTransit*"
+          - "Serilog.*"
+          - "ZiggyCreatures.*"
           - "Microsoft.EntityFrameworkCore.*"

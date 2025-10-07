@@ -5,6 +5,8 @@
         <CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
     </PropertyGroup>
     <ItemGroup>
+        <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.14.0" />
+        <PackageVersion Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.14.0" />
         <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
         <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
         <PackageVersion Include="HotChocolate.AspNetCore" Version="15.1.8" />
@@ -19,5 +21,16 @@
         <PackageVersion Include="HotChocolate.Types.Analyzers" Version="15.1.8" />
         <PackageVersion Include="HotChocolate.Types.NodaTime" Version="15.1.8" />
         <PackageVersion Include="HotChocolate.Types.OffsetPagination" Version="15.1.8" />
+        <PackageVersion Include="MassTransit" Version="8.5.0" />
+        <PackageVersion Include="MassTransit.Marten" Version="8.5.0" />
+        <PackageVersion Include="MassTransit.RabbitMQ" Version="8.5.0" />
+        <PackageVersion Include="MailKit" Version="4.13.0" />
+        <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
+        <PackageVersion Include="Serilog.Enrichers.Context" Version="4.6.0" />
+        <PackageVersion Include="Serilog.Enrichers.Thread" Version="4.0.0" />
+        <PackageVersion Include="Serilog.Extensions.Hosting" Version="9.0.0" />
+        <PackageVersion Include="Serilog.Extensions.Logging" Version="9.0.0" />
+        <PackageVersion Include="ZiggyCreatures.FusionCache" Version="2.3.0" />
+        <PackageVersion Include="ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis" Version="2.3.0" />
     </ItemGroup>
 </Project>
