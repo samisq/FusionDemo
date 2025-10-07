@@ -2,10 +2,32 @@
     <PropertyGroup>
         <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
     </PropertyGroup>
-    <Target Name="IncludeAllPackageVersions" BeforeTargets="ApplyImplicitVersions">
-        <ItemGroup>
-            <PackageReference Include="%(PackageVersion.Identity)" Condition="'%(PackageVersion.Identity)' != ''"/>
-        </ItemGroup>
-        <Message Text="Auto-included package: %(PackageReference.Identity)" Importance="high"/>
-    </Target>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools"/>
+        <PackageReference Include="HotChocolate.AspNetCore"/>
+        <PackageReference Include="HotChocolate.AspNetCore.Authorization"/>
+        <PackageReference Include="HotChocolate.AspNetCore.CommandLine"/>
+        <PackageReference Include="HotChocolate.Data.EntityFramework"/>
+        <PackageReference Include="HotChocolate.Diagnostics"/>
+        <PackageReference Include="HotChocolate.Execution"/>
+        <PackageReference Include="HotChocolate.Fusion"/>
+        <PackageReference Include="HotChocolate.Subscriptions.Redis"/>
+        <PackageReference Include="HotChocolate.Transport.Http"/>
+        <PackageReference Include="HotChocolate.Types.Analyzers"/>
+        <PackageReference Include="HotChocolate.Types.NodaTime"/>
+        <PackageReference Include="HotChocolate.Types.OffsetPagination"/>
+        <PackageReference Include="MassTransit"/>
+        <PackageReference Include="MassTransit.Marten"/>
+        <PackageReference Include="MassTransit.RabbitMQ"/>
+        <PackageReference Include="MailKit"/>
+        <PackageReference Include="Serilog.AspNetCore"/>
+        <PackageReference Include="Serilog.Enrichers.Context"/>
+        <PackageReference Include="Serilog.Enrichers.Thread"/>
+        <PackageReference Include="Serilog.Extensions.Hosting"/>
+        <PackageReference Include="Serilog.Extensions.Logging"/>
+        <PackageReference Include="ZiggyCreatures.FusionCache"/>
+        <PackageReference Include="ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis"/>
+    </ItemGroup>
 </Project>
