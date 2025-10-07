@@ -21,9 +21,9 @@
         <PackageVersion Include="HotChocolate.Types.Analyzers" Version="15.1.8" />
         <PackageVersion Include="HotChocolate.Types.NodaTime" Version="15.1.8" />
         <PackageVersion Include="HotChocolate.Types.OffsetPagination" Version="15.1.8" />
-        <PackageVersion Include="MassTransit" Version="8.5.0" />
-        <PackageVersion Include="MassTransit.Marten" Version="8.5.0" />
-        <PackageVersion Include="MassTransit.RabbitMQ" Version="8.5.0" />
+        <PackageVersion Include="MassTransit" Version="8.5.4" />
+        <PackageVersion Include="MassTransit.Marten" Version="8.5.4" />
+        <PackageVersion Include="MassTransit.RabbitMQ" Version="8.5.4" />
         <PackageVersion Include="MailKit" Version="4.14.0" />
         <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
         <PackageVersion Include="Serilog.Enrichers.Context" Version="4.6.0" />
