@@ -1,0 +1,24 @@
+name: Update Lock Files
+
+on:
+  pull_request:
+    branches:
+      - 'dependabot/nuget/**'
+
+jobs:
+  dependabot-auto-update:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}  # This ensures that the workflow checks out the PR branch
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.304
+
+      - name: Install dependencies
+        run: dotnet restore --force-evaluate
