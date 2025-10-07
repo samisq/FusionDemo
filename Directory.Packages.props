@@ -5,8 +5,8 @@
         <CentralPackageVersionOverrideEnabled>false</CentralPackageVersionOverrideEnabled>
     </PropertyGroup>
     <ItemGroup>
-        <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0" />
-        <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.9" />
+        <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.9" />
         <PackageVersion Include="HotChocolate.AspNetCore" Version="15.1.8" />
         <PackageVersion Include="HotChocolate.AspNetCore.Authorization" Version="15.1.8" />
         <PackageVersion Include="HotChocolate.AspNetCore.CommandLine" Version="15.1.8" />
