@@ -10,27 +10,26 @@ on:
     branches: [ "master" ]
 
   # Trigger build workflow ONLY after Auto Sync Lock Files workflow completes for dependabot NuGet branches
-  workflow_run:
-    workflows: [ "Auto Sync Lock Files" ]
-    types:
-      - completed
-    branches:
-      - 'dependabot/nuget/**'
+  repository_dispatch:
+    types: [ dependabot-auto-sync-completed ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    # For repository_dispatch, always run (it's triggered only when Auto Sync completes successfully)
+    # For push/pull_request, exclude dependabot PRs (they use repository_dispatch)
     if: |
-      !(github.actor == 'dependabot[bot]' && startsWith(github.head_ref, 'dependabot/nuget/')) &&
-      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+      github.event_name == 'repository_dispatch' ||
+      (github.event_name != 'repository_dispatch' && !(github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'))
 
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_branch || github.ref }}
+        # For repository_dispatch, checkout the PR branch using client_payload data
+        ref: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.head_sha || github.ref }}
     
-    - name: Create check run for PR
-      if: github.event_name == 'workflow_run'
+    - name: Create check run for dependabot PR
+      if: github.event_name == 'repository_dispatch'
       id: check_run
       uses: actions/github-script@v7
       with:
@@ -39,7 +38,7 @@ jobs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             name: 'Build (.NET)',
-            head_sha: '${{ github.event.workflow_run.head_sha }}',
+            head_sha: '${{ github.event.client_payload.head_sha }}',
             status: 'in_progress',
             started_at: new Date().toISOString(),
           });
@@ -56,7 +55,7 @@ jobs:
       run: dotnet build --no-restore
     
     - name: Update check run on success
-      if: github.event_name == 'workflow_run' && success()
+      if: github.event_name == 'repository_dispatch' && success()
       uses: actions/github-script@v7
       with:
         script: |
@@ -70,7 +69,7 @@ jobs:
           });
     
     - name: Update check run on failure
-      if: github.event_name == 'workflow_run' && failure()
+      if: github.event_name == 'repository_dispatch' && failure()
       uses: actions/github-script@v7
       with:
         script: |
