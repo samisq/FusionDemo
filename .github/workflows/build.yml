@@ -5,9 +5,9 @@ name: .NET
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
   # Trigger build workflow ONLY after Auto Sync Lock Files workflow completes for dependabot NuGet branches
   workflow_run:
