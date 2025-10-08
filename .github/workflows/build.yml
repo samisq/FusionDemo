@@ -1,0 +1,36 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Trigger build workflow ONLY after Auto Sync Lock Files workflow completes for dependabot NuGet branches
+  workflow_run:
+    workflows: [ "Auto Sync Lock Files" ]
+    types:
+      - completed
+    branches:
+      - 'dependabot/nuget/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: |
+      !(github.actor == 'dependabot[bot]' && startsWith(github.head_ref, 'dependabot/nuget/')) &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.304
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore

@@ -1,4 +1,4 @@
-name: Auto-Restore on Dependabot PRs
+name: Auto Sync Lock Files
 
 on:
   pull_request:
