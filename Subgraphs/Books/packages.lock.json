@@ -96,6 +96,25 @@
           "System.Text.Json": "9.0.9"
         }
       },
+      "ZiggyCreatures.FusionCache": {
+        "type": "Direct",
+        "requested": "[2.3.0, )",
+        "resolved": "2.3.0",
+        "contentHash": "DPoecuP3ZqjQvDicww49OqkLUjIASWBF0no4Zwg3uj3ylhN/HhdN0rz7/u49TBm3+5mstnQSxbKB/3NHBosdKA==",
+        "dependencies": {
+          "Microsoft.Extensions.Caching.Memory": "9.0.0"
+        }
+      },
+      "ZiggyCreatures.FusionCache.Backplane.StackExchangeRedis": {
+        "type": "Direct",
+        "requested": "[2.3.0, )",
+        "resolved": "2.3.0",
+        "contentHash": "aSo/8893+UZtEgOtW0lrVoj+VYvzZFYY4DYWWEIIeoEdaRXDPk6R1Medxurg3MTdPuBCKq/0pMF/NBjot8JIIw==",
+        "dependencies": {
+          "StackExchange.Redis": "2.8.31",
+          "ZiggyCreatures.FusionCache": "2.3.0"
+        }
+      },
       "ChilliCream.Nitro.App": {
         "type": "Transitive",
         "resolved": "28.0.7",
@@ -1077,6 +1096,14 @@
           "Npgsql": "9.0.2"
         }
       },
+      "Pipelines.Sockets.Unofficial": {
+        "type": "Transitive",
+        "resolved": "2.2.8",
+        "contentHash": "zG2FApP5zxSx6OcdJQLbZDk2AVlN2BNQD6MorwIfV6gVj0RRxWPEp2LXAxqDGZqeNV1Zp0BNPcNaey/GXmTdvQ==",
+        "dependencies": {
+          "System.IO.Pipelines": "5.0.1"
+        }
+      },
       "Polly.Core": {
         "type": "Transitive",
         "resolved": "8.5.2",
@@ -1127,6 +1154,15 @@
         "contentHash": "uZVTi02C1SxqzgT0HqTWatIbWGb40iIkfc3FpFCpE/r7g6K0PqzDUeefL6P6HPhDtc6BacN3yQysfzP7ks+wSQ==",
         "dependencies": {
           "SQLitePCLRaw.core": "2.1.10"
+        }
+      },
+      "StackExchange.Redis": {
+        "type": "Transitive",
+        "resolved": "2.8.31",
+        "contentHash": "RCHVQa9Zke8k0oBgJn1Yl6BuYy8i6kv+sdMObiH60nOwD6QvWAjxdDwOm+LO78E8WsGiPqgOuItkz98fPS6haQ==",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "Pipelines.Sockets.Unofficial": "2.2.8"
         }
       },
       "System.Buffers": {

@@ -14,12 +14,9 @@ runs:
         set -euo pipefail
         git config --global user.name 'dependabot[bot]'
         git config --global user.email 'support@github.com'
-        
-        echo '*****STARTING LOCKFILE SYNC*****'
-        git branch --show-current
+
+        echo "cuurrent branch: $(git branch --show-current)"
         git add -A
         git status
         git commit -m 'Update lock files' || echo 'No changes to commit'
-        BRANCH_NAME="${{ github.head_ref || github.ref_name }}"
-        echo "The branch name is $BRANCH_NAME"
         git push
