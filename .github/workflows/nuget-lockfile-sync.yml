@@ -1,0 +1,57 @@
+name: Auto Sync Lock Files
+
+on:
+  workflow_call:
+    inputs:
+      dotnet-version:
+        description: 'Dotnet SDK version'
+        required: false
+        type: string
+        default: '9.0.304'
+    secrets: {}
+
+permissions:
+  actions: read
+  contents: write
+  packages: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  update-lock-files:
+    name: Auto Sync Lock Files
+    runs-on: ubuntu-latest
+    outputs:
+      commit_pushed: ${{ steps.sync_commit.outputs.commit_pushed }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          # For PR-triggered parent workflow, head_ref will be available via github.head_ref there; here we just checkout default ref passed in
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ inputs.dotnet-version }}
+
+      - name: Force restore
+        run: dotnet restore --force-evaluate
+
+      - name: Commit and Push Changes
+        id: sync_commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config --global user.name 'dependabot[bot]'
+          git config --global user.email 'support@github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No staged changes'
+            echo 'commit_pushed=false' >> $GITHUB_OUTPUT
+          else
+            echo 'Committing updated lock files'
+            git commit -m 'Update lock files'
+            git push
+            echo 'commit_pushed=true' >> $GITHUB_OUTPUT
+          fi

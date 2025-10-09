@@ -4,80 +4,36 @@
 name: .NET
 
 on:
-  push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  push:
+    branches: [ "master" ]
 
-  # Trigger build workflow ONLY after Auto Sync Lock Files workflow completes for dependabot NuGet branches
-  repository_dispatch:
-    types: [ dependabot-auto-sync-completed ]
+concurrency:
+  group: build-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    # For repository_dispatch, always run (it's triggered only when Auto Sync completes successfully)
-    # For push/pull_request, exclude dependabot PRs (they use repository_dispatch)
-    if: |
-      github.event_name == 'repository_dispatch' ||
-      (github.event_name != 'repository_dispatch' && !(github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'))
+  auto-sync:
+    name: Auto Sync Lock Files (Dependabot only)
+    if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]' && startsWith(github.head_ref, 'dependabot/nuget/')
+    uses: ./.github/workflows/nuget-lockfile-sync.yml
 
+  build:
+    name: Build
+    needs: [auto-sync]
+    runs-on: ubuntu-latest
+    if: needs.auto-sync.result != 'failure' && (needs.auto-sync.outputs.commit_pushed != 'true')
     steps:
-    - uses: actions/checkout@v4
-      with:
-        # For repository_dispatch, checkout the PR branch using client_payload data
-        ref: ${{ github.event_name == 'repository_dispatch' && github.event.client_payload.head_sha || github.ref }}
-    
-    - name: Create check run for dependabot PR
-      if: github.event_name == 'repository_dispatch'
-      id: check_run
-      uses: actions/github-script@v7
-      with:
-        script: |
-          const { data: checkRun } = await github.rest.checks.create({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            name: 'Build (.NET)',
-            head_sha: '${{ github.event.client_payload.head_sha }}',
-            status: 'in_progress',
-            started_at: new Date().toISOString(),
-          });
-          core.setOutput('check_run_id', checkRun.id);
-          return checkRun.id;
-    
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 9.0.304
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    
-    - name: Update check run on success
-      if: github.event_name == 'repository_dispatch' && success()
-      uses: actions/github-script@v7
-      with:
-        script: |
-          await github.rest.checks.update({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            check_run_id: '${{ steps.check_run.outputs.check_run_id }}',
-            status: 'completed',
-            conclusion: 'success',
-            completed_at: new Date().toISOString(),
-          });
-    
-    - name: Update check run on failure
-      if: github.event_name == 'repository_dispatch' && failure()
-      uses: actions/github-script@v7
-      with:
-        script: |
-          await github.rest.checks.update({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            check_run_id: '${{ steps.check_run.outputs.check_run_id }}',
-            status: 'completed',
-            conclusion: 'failure',
-            completed_at: new Date().toISOString(),
-          });
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.304
+      - name: Restore dependencies
+        run: dotnet restore --locked-mode
+      - name: Build
+        run: dotnet build --no-restore
