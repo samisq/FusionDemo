@@ -48,11 +48,11 @@
       },
       "MassTransit": {
         "type": "Direct",
-        "requested": "[8.5.0, )",
-        "resolved": "8.5.0",
-        "contentHash": "K0dkuWGqSD3i23Qnmeltk7igEHlnrm93IuKV8ZfspoxfyKPzvqMfQVkC8V1/UxHbwIevdhdRhtV7SArNAda6aw==",
+        "requested": "[8.5.4, )",
+        "resolved": "8.5.4",
+        "contentHash": "uNmFkIICpCZ6AWSJfWfQJc4jjVhQygdPY4/yFEiOZkIVbwEbpFrJTjThzSSinbZFCtyYQMBN6RqHghVMwQy7pA==",
         "dependencies": {
-          "MassTransit.Abstractions": "8.5.0",
+          "MassTransit.Abstractions": "8.5.4",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.0",
           "Microsoft.Extensions.Diagnostics.HealthChecks": "9.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
@@ -62,21 +62,22 @@
       },
       "MassTransit.Marten": {
         "type": "Direct",
-        "requested": "[8.5.0, )",
-        "resolved": "8.5.0",
-        "contentHash": "HMtmNNPi933bzOd0XXkJjOBNBnzvOvfpcMzex+wQEMnmk4wj17EGM6xcm0L3DrwNKqtM6bzNDcCs3BkcVnDxAA==",
+        "requested": "[8.5.4, )",
+        "resolved": "8.5.4",
+        "contentHash": "lv03sGl1ZTqozTBGVK1uK4gluaX3UajCtcXJl6TeGNUMc2q4a9uMVwom/dCdKWFQCU+mMwmpMaXxu89kJhtCjw==",
         "dependencies": {
-          "Marten": "8.3.0",
-          "MassTransit": "8.5.0"
+          "Marten": "8.10.0",
+          "MassTransit": "8.5.4",
+          "System.Text.Json": "9.0.0"
         }
       },
       "MassTransit.RabbitMQ": {
         "type": "Direct",
-        "requested": "[8.5.0, )",
-        "resolved": "8.5.0",
-        "contentHash": "JwN6XhEGDmngUX0YucOJYn1CRaSD5jBjpj0cPAVjgzD800QA1CKCvPZh4R49mYbiHNf+ZEzC2vrjps6H1eXdgg==",
+        "requested": "[8.5.4, )",
+        "resolved": "8.5.4",
+        "contentHash": "k/kuewjqOxiPXfLW6GZsKIgtH1GcY7tUXk0bN8Z7etgGGnaE9JaVBFd/jDSprzP6xMtxc10+KEF9AXkJX7r32g==",
         "dependencies": {
-          "MassTransit": "8.5.0",
+          "MassTransit": "8.5.4",
           "RabbitMQ.Client": "7.1.2"
         }
       },
@@ -461,8 +462,8 @@
       },
       "JasperFx": {
         "type": "Transitive",
-        "resolved": "1.2.0",
-        "contentHash": "/DEJIhbfXv12DhqqYYCEpmqXOqt7NMnAk6VhmL0p8QNRmiAp5VxpDM4+UmCugvIN+VJeuX5D6xDpdAYsfjqbrg==",
+        "resolved": "1.6.0",
+        "contentHash": "3L7DiWTr9spcU0sSZUlBcWFfLzZklRd8fSgZe2V/o1ny8wZbHqs+2mLONTR/JY1dH6HZRtSAJptgMyaeciHO0g==",
         "dependencies": {
           "FastExpressionCompiler": "5.1.1",
           "ImTools": "4.0.0",
@@ -477,11 +478,10 @@
       },
       "JasperFx.Events": {
         "type": "Transitive",
-        "resolved": "1.2.1",
-        "contentHash": "JaEYEqcrEu3RhIvVR7hYCkj4ZcrWfTBKl4cd2E12bLvNVu6tKBQiChLLUVLam5h7e9D+s/KHE4kNpSGgOZfOqA==",
+        "resolved": "1.8.0",
+        "contentHash": "8lo+VsQJCVOBl3TBBdbdzeGdFL87HYH58oI8PVtE5JjbgcJ/FBXNxt8SWF9XXbDbc8TOUETvapG0/nL6N25kRw==",
         "dependencies": {
-          "JasperFx": "1.2.0",
-          "System.Diagnostics.DiagnosticSource": "9.0.4"
+          "JasperFx": "1.6.0"
         }
       },
       "JasperFx.RuntimeCompiler": {
@@ -498,12 +498,12 @@
       },
       "Marten": {
         "type": "Transitive",
-        "resolved": "8.3.0",
-        "contentHash": "5T3IbXoyF9W7yYzSDOki66q/ZW7Y+8w6WIReHNQjn3+8nt2iiSjE7n+AB1PiakozauoNazAYRFBKfYmN9VD/hg==",
+        "resolved": "8.10.0",
+        "contentHash": "eBYRLu6kmCpHcAjMQMuC27wgUtATfmg+IhBzLhB1MsmZCyxSh13NgM2Oh1M5VNn/BfWOVEcZZrQHUBeF7svJoQ==",
         "dependencies": {
           "FSharp.Core": "9.0.100",
-          "JasperFx": "1.2.0",
-          "JasperFx.Events": "1.2.1",
+          "JasperFx": "1.6.0",
+          "JasperFx.Events": "1.8.0",
           "JasperFx.RuntimeCompiler": "4.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "9.0.0",
           "Newtonsoft.Json": "13.0.3",
@@ -514,8 +514,8 @@
       },
       "MassTransit.Abstractions": {
         "type": "Transitive",
-        "resolved": "8.5.0",
-        "contentHash": "Dkc+LudZCkg0HSO9z/WfdO18x4czA82SMkBBrtliBo+gIeXu39/Y8xgPiyN2/3TJ0fbmg6C5w/dBTHXFS2TH6g=="
+        "resolved": "8.5.4",
+        "contentHash": "6rIDZNr+mldYiIyiFXY4l4p3BsUDVQDtHpRwoZOQY7/T6TboAqCV4fbLM4tDwZqV8OOWbJHs1a4wQyyAOYwHGA=="
       },
       "Microsoft.Bcl.AsyncInterfaces": {
         "type": "Transitive",
@@ -1227,11 +1227,6 @@
           "System.Composition.Hosting": "9.0.0",
           "System.Composition.Runtime": "9.0.0"
         }
-      },
-      "System.Diagnostics.DiagnosticSource": {
-        "type": "Transitive",
-        "resolved": "9.0.4",
-        "contentHash": "Be0emq8bRmcK4eeJIFUt9+vYPf7kzuQrFs8Ef1CdGvXpq/uSve22PTSkRF09bF/J7wmYJ2DHf2v7GaT3vMXnwQ=="
       },
       "System.Diagnostics.EventLog": {
         "type": "Transitive",
