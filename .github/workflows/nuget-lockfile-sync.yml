@@ -10,6 +10,9 @@ on:
         default: '9.0.304'
     secrets: {}
 
+permissions:
+  pull-requests: write
+
 jobs:
   update-lock-files:
     name: Auto Sync Lock Files
