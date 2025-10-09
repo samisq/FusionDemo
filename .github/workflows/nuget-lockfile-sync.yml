@@ -45,6 +45,6 @@ jobs:
           git commit -m 'Update lock files' || echo "No changes to commit"
 
           # Use GITHUB_HEAD_REF for PR branch name, not GITHUB_REF
-          BRANCH_NAME="${{ github.head_ref }}"
+          BRANCH_NAME="${{ github.ref }}"
           echo "The branch name is $BRANCH_NAME"
-          git push origin "$BRANCH_NAME"
+          git push
