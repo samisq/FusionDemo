@@ -10,13 +10,6 @@ on:
         default: '9.0.304'
     secrets: {}
 
-permissions:
-  actions: read
-  contents: write
-  packages: read
-  checks: write
-  pull-requests: write
-
 jobs:
   update-lock-files:
     name: Auto Sync Lock Files

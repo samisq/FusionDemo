@@ -5,5 +5,7 @@
         <Nullable>enable</Nullable>
         <SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
         <DirectoryPackagesPropsPath>$(MSBuildThisFileDirectory)\.packages\Directory.Packages.props</DirectoryPackagesPropsPath>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <DisableImplicitNuGetFallbackFolder>true</DisableImplicitNuGetFallbackFolder>
     </PropertyGroup>
 </Project>
