@@ -14,14 +14,11 @@ jobs:
   update-lock-files:
     name: Auto Sync Lock Files
     runs-on: ubuntu-latest
-    outputs:
-      commit_pushed: ${{ steps.sync_commit.outputs.commit_pushed }}
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          # For PR-triggered parent workflow, head_ref will be available via github.head_ref there; here we just checkout default ref passed in
-          fetch-depth: 0
+          ref: ${{ github.head_ref }}
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -39,6 +36,7 @@ jobs:
           git config --global user.name 'dependabot[bot]'
           git config --global user.email 'support@github.com'
 
+          echo '*****STARTING*****'
           git branch --show-current
           git status
           git add -A
