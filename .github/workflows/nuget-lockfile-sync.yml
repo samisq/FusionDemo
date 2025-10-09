@@ -38,13 +38,13 @@ jobs:
           set -euo pipefail
           git config --global user.name 'dependabot[bot]'
           git config --global user.email 'support@github.com'
+
+          git branch --show-current
+          git status
           git add -A
-          if git diff --cached --quiet; then
-            echo 'No staged changes'
-            echo 'commit_pushed=false' >> $GITHUB_OUTPUT
-          else
-            echo 'Committing updated lock files'
-            git commit -m 'Update lock files'
-            git push
-            echo 'commit_pushed=true' >> $GITHUB_OUTPUT
-          fi
+          git commit -m 'Update lock files' || echo "No changes to commit"
+
+          # Use GITHUB_HEAD_REF for PR branch name, not GITHUB_REF
+          BRANCH_NAME="${{ github.head_ref }}"
+          echo "The branch name is $BRANCH_NAME"
+          git push origin "$BRANCH_NAME"
