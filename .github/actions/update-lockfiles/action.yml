@@ -1,19 +1,9 @@
-name: 'NuGet Lockfile Sync'
+name: 'Update Lockfiles'
 description: 'Force restore and commit updated NuGet lock files for Dependabot NuGet PRs'
-inputs:
-  dotnet-version:
-    description: 'Dotnet SDK version'
-    required: false
-    default: '9.0.304'
 
 runs:
   using: 'composite'
   steps:
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: ${{ inputs.dotnet-version }}
-
     - name: Force restore
       shell: bash
       run: dotnet restore --force-evaluate
@@ -24,11 +14,12 @@ runs:
         set -euo pipefail
         git config --global user.name 'dependabot[bot]'
         git config --global user.email 'support@github.com'
+        
         echo '*****STARTING LOCKFILE SYNC*****'
         git branch --show-current
-        git status
         git add -A
+        git status
         git commit -m 'Update lock files' || echo 'No changes to commit'
         BRANCH_NAME="${{ github.head_ref || github.ref_name }}"
         echo "The branch name is $BRANCH_NAME"
-        git push origin "$BRANCH_NAME"
+        git push
