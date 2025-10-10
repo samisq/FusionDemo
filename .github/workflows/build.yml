@@ -39,7 +39,7 @@ jobs:
       - name: Restore dependencies
         run: |
           echo "work space: $GITHUB_WORKSPACE"
-          echo "{{ github.workspace }}"
+          echo "github.workspace: ${{ github.workspace }}"
           dotnet restore --locked-mode --packages "$GITHUB_WORKSPACE/../.nuget"
 
       - name: Build
