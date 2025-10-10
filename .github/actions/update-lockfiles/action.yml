@@ -1,12 +1,14 @@
 name: 'Update Lockfiles'
-description: 'Force restore and commit updated NuGet lock files for Dependabot NuGet PRs'
+description: 'Force restore and commit updated NuGet lock files for Dependabot PRs'
 
 runs:
   using: 'composite'
   steps:
     - name: Force restore
       shell: bash
-      run: dotnet restore --force-evaluate
+      run: |
+        echo "work space: $GITHUB_WORKSPACE"
+        dotnet restore --force-evaluate
 
     - name: Commit and Push Changes
       shell: bash
