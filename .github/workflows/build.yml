@@ -37,7 +37,10 @@ jobs:
         uses: ./.github/actions/update-lockfiles    
 
       - name: Restore dependencies
-        run: dotnet restore --locked-mode
+        run: |
+          echo "work space: $GITHUB_WORKSPACE"
+          echo "{{ github.workspace }}"
+          dotnet restore --locked-mode --packages "$GITHUB_WORKSPACE/../.nuget"
 
       - name: Build
         run: dotnet build --no-restore

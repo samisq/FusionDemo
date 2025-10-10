@@ -8,7 +8,7 @@ runs:
       shell: bash
       run: |
         echo "work space: $GITHUB_WORKSPACE"
-        dotnet restore --force-evaluate
+        dotnet restore --force-evaluate --packages "$GITHUB_WORKSPACE/../.nuget"
 
     - name: Commit and Push Changes
       shell: bash
